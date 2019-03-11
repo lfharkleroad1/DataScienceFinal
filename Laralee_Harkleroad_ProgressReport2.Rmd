@@ -1,0 +1,98 @@
+---
+title: "Laralee_Harkleroad_ProgressReport2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(haven)
+library(readxl)
+library(forcats)
+library(RColorBrewer)
+library(knitr)
+library(plotly)
+library(Metrics)
+library(modelr)
+library(rvest)
+library(acs)
+library(lubridate)
+library(noncensus)
+library(tigris)
+```
+The above code sets up the file. I went ahead and loaded every library we have worked with thus far just to be on the safe side.
+
+#1 Code that accesses a dataset that contains your dependent variable.
+```{r}
+delta <-read.csv('/Users/lfhar/OneDrive/8200 Data Science/scripts_data_files/delta_public_release_00_15.csv',header = TRUE)
+```
+The above code loads the data from Delta that has been saved in a CSV file.
+
+```{r}
+View(delta)
+```
+The above code views the data.
+
+```{r}
+save(delta,file="delta.Rdata")
+```
+The above code saves the data as an Rdata file.
+
+
+#2 A univaraiate graphic describing the dependent variable.
+```{r}
+gg<-ggplot(delta,aes(x=acadsupp01))
+gg<-gg+geom_histogram(fill="lightblue")
+gg
+``` 
+The above code creates a histogram graphic describing the dependent variable of academic support spending. 
+
+#3 The conditional mean of your dependent variable at levels of at least one independent variable.
+```{r}
+delta_sum<-delta%>%
+  group_by(total03_revenue)%>%
+  summarize(acadsupp01_avg=mean(acadsupp01))
+
+delta_sum
+```
+The above code interprets the conditional mean of academic support spending as a function of total revenues.
+
+```{r}
+delta_sum<-delta%>%
+  group_by(govt_reliance_c)%>%
+  summarize(acadsupp01_avg=mean(acadsupp01))
+
+delta_sum
+```
+The above code interprets the conditional mean of academic support spending as a function of institutional reliance on governmental funding.
+
+```{r}
+delta_sum<-delta%>%
+  group_by(total03_revenue,govt_reliance_c)%>%
+  summarize(acadsupp01_avg=mean(acadsupp01_avg))
+
+## Get the results
+delta_sum
+```
+The above code interprets the conditional mean of academic support spending as a function of both total revenues received and institutional reliance on governmental funding.
+
+#4 A bivariate graphic that compares your dependent variable with at least one other independent variable.
+```{r}
+delta_sum<-delta%>%
+  group_by(govt_reliance_c)%>%
+  summarize(acadsupp01_avg=mean(acadsupp01))
+
+delta_sum
+## Now a dot plot
+gg<-ggplot(delta_sum,aes(x=reorder(govt_reliance_c,-acadsupp01_avg),y=acadsupp01_avg))
+gg<-gg+geom_point(color="orange",size=5)
+gg<-gg+xlab("Reliance on Government Support")+ylab("Average Academic Support Expenses")
+gg<-gg+coord_flip()
+
+gg
+```
+The above code creates a dot plot comparing average academic support expenses with institutional reliance on government support.
+

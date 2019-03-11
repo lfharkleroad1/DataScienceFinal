@@ -1,0 +1,22 @@
+---
+title: "Laralee_Harkleroad_ProgressReport1"
+output:
+  word_document: default
+  html_document: default
+---
+#1. A paragraph describing your project: what you will be predicting, why it is interesting to do this
+
+Several years ago under the tutelage of a previous University President at another institution, I was actively involved in tracking the number and frequency of the rising federal and state reports the institution was required to submit. Interestingly, just this week Vanderbilt University's Chancellor Zeppos hit upon the exact reason why this President had been interested in tracking this information diligently. The increase in required reporting has exploded administrative costs for Universities everywhere and led to unprecedented administrative and staff headcount in order to both comply and accurately compile information for the mandated reports. As the value of a college degree continues to be questioned by lawmakers and business leaders, the reporting requirements are not likely to lessen. Given the unlikelihood of reporting relief, how do institution's predict what the expenses might be for the added administrative needs to comply? Developing a model for predicting possible future expenses is important for an institution as it works to set its budget, which leads to setting its recruitment and donor contribution goals in order to balance the budget.
+
+#2. A description of where you will find this data
+
+I will be finding my data for this project using the Delta Cost Project at American Institutes for Research. 
+https://deltacostproject.org/delta-cost-project-database 
+Unit of analysis: colleges and universities
+Time frame: 1987-2015
+According to their website, Delta Cost Project is focused on analyzing how colleges spend their money, believing college spending can be contained without sacrificing quality. 
+
+#3. A few lines describing your dependent variable in detail: What is the nature of this outcome as a variable?
+
+My dependent variable will be expenditures for academic and institutional support and student services, all of which play into the exploding administrative and reporting related above. According to the Delta Data Dictionary, "Academic support - A functional expense category that includes expenses of activities and services that support the institution's primary missions of instruction, research, and public service. It includes the retention, preservation, and display of educational materials (for example, libraries, museums, and galleries); organized activities that provide support services to the academic functions of the institution (such as a demonstration school associated with a college of education or veterinary and dental clinics if their primary purpose is to support the instructional program); media such as audiovisual services; academic administration (including academic deans but not department chairpersons); and formally organized and separately budgeted academic personnel development and course and curriculum development expenses. Also included are information technology expenses related to academic support activities; if an institution does not separately budget and expense information technology resources, the costs associated with the three primary programs will be applied to this function and the remainder to institutional support. Operations and maintenance and interest amounts attributed to the academic support function have been subtracted from the total academic support expenditure amount at FASB reporting institutions. Operations and maintenance amounts (and interest in the aligned form beginning in 2009) attributed to the academic support function have been subtracted from the total academic support expenditure amount at public Aligned Form reporting institutions."
+
